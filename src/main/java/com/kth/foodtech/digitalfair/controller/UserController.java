@@ -28,7 +28,6 @@ public class UserController {
         }catch (UserNotFoundException unf){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @PostMapping("/create")
