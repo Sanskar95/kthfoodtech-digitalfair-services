@@ -15,6 +15,8 @@ public class User {
     private String username;
     private String email;
     private Integer points;
+    private Integer snakePoints;
+
 
     public User() {
         this.points = 0;
@@ -42,5 +44,13 @@ public class User {
 
     public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    public Integer getSnakePoints() {
+        return snakePoints;
+    }
+
+    public void setSnakePoints(Integer snakePoints) {
+        this.snakePoints = snakePoints;
     }
 }

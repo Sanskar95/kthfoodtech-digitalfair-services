@@ -53,4 +53,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("/change_snake_points/{username}/{snake_points}")
+    public ResponseEntity<User> changeUserSnakePoints(@PathVariable String username, @PathVariable Integer snake_points) {
+        try {
+            User user=userService.changeSnakePoints(username, snake_points);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        catch (UserNotFoundException unf){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

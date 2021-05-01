@@ -34,4 +34,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User changeSnakePoints(String username, Integer points) throws UserNotFoundException {
+        User user = getUserByUsername(username);
+        user.setPoints(points);
+        return userRepository.save(user);
+    }
+
 }
