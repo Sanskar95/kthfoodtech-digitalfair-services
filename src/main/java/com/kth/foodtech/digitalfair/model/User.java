@@ -16,10 +16,12 @@ public class User {
     private String email;
     private Integer points;
     private Integer snakePoints;
+    private Boolean snakePlayedFlag;
 
 
     public User() {
         this.points = 0;
+        this.snakePlayedFlag =false;
     }
 
     public String getUsername() {
@@ -52,5 +54,13 @@ public class User {
 
     public void setSnakePoints(Integer snakePoints) {
         this.snakePoints = snakePoints;
+    }
+
+    public Boolean getSnakePlayed() {
+        return snakePlayedFlag;
+    }
+
+    public void setSnakePlayed(Boolean snakePlayed) {
+        snakePlayedFlag = snakePlayed;
     }
 }

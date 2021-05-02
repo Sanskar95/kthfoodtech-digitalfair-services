@@ -37,6 +37,7 @@ public class UserService {
     public User changeSnakePoints(String username, Integer points) throws UserNotFoundException {
         User user = getUserByUsername(username);
         user.setPoints(points);
+        user.setSnakePlayed(true);
         return userRepository.save(user);
     }
 
