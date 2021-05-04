@@ -1,6 +1,7 @@
 package com.kth.foodtech.digitalfair.controller;
 
 
+import com.kth.foodtech.digitalfair.exeption.CodeInvalidException;
 import com.kth.foodtech.digitalfair.exeption.UserAlreadyExistsException;
 import com.kth.foodtech.digitalfair.exeption.UserNotFoundException;
 import com.kth.foodtech.digitalfair.model.RedeemCode;
@@ -66,13 +67,13 @@ public class UserController {
         }
     }
 
-    @GetMapping("/apply_code/")
+    @PostMapping("/apply_code")
     public ResponseEntity<User> validateRedeemCode(@RequestBody RedeemCodeApplyRequest redeemCodeApplyRequest) {
         try {
             User user=userService.applyRedeemCode(redeemCodeApplyRequest);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
-        catch (UserNotFoundException unf){
+        catch (CodeInvalidException | UserNotFoundException ce){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

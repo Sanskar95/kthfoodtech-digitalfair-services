@@ -1,6 +1,7 @@
 package com.kth.foodtech.digitalfair.service;
 
 
+import com.kth.foodtech.digitalfair.exeption.CodeInvalidException;
 import com.kth.foodtech.digitalfair.exeption.UserAlreadyExistsException;
 import com.kth.foodtech.digitalfair.exeption.UserNotFoundException;
 import com.kth.foodtech.digitalfair.model.RedeemCode;
@@ -51,8 +52,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User applyRedeemCode(RedeemCodeApplyRequest redeemCodeApplyRequest) throws UserNotFoundException {
+    public User applyRedeemCode(RedeemCodeApplyRequest redeemCodeApplyRequest) throws UserNotFoundException, CodeInvalidException {
         User user = getUserByUsername(redeemCodeApplyRequest.getUsername());
+        Boolean codeValidFlag= false;
         List<RedeemCode> redeemCodes =
                 StreamSupport.stream(redeemCodeRepository.findAll().spliterator(), false)
                         .collect(Collectors.toList());
@@ -61,8 +63,12 @@ public class UserService {
            if(redeemCode1.getCode().equals(redeemCodeApplyRequest.getRedeemCode())){
                user.setEmail(redeemCodeApplyRequest.getEmail());
                user.setPoints(user.getPoints()+redeemCode1.getPoints());
+               codeValidFlag= true;
                break;
            }
+        }
+        if(!codeValidFlag){
+            throw new CodeInvalidException("Invalid Code");
         }
 
        return  userRepository.save(user);
