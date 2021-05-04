@@ -22,7 +22,7 @@ public class QuestionService {
         List<Question> questions =
                 StreamSupport.stream(questionRepository.findAll().spliterator(), false)
                         .collect(Collectors.toList());
-        return questions;
+        return questions.stream().filter(question -> question.getCompany().equals(company)).collect(Collectors.toList());
     }
 
     public Question createQuestion(Question question){
