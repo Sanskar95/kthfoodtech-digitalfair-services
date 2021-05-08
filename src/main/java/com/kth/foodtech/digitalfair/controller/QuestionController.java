@@ -25,4 +25,9 @@ public class QuestionController {
     public Question createQuestion(@RequestBody Question question){
         return questionService.createQuestion(question);
     }
+
+    @PostMapping("/bulk_create")
+    public List<Question> createBulkQuestions(@RequestBody List<Question> questions){
+        return questionService.createBulkQuestions(questions);
+    }
 }

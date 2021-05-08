@@ -39,9 +39,12 @@ public class UserService {
 
     }
 
-    public User changePoints(String username, Integer points) throws UserNotFoundException {
+    public User changePointsAndAddCompany(String username, Integer points, String company) throws UserNotFoundException {
         User user = getUserByUsername(username);
-        user.setPoints(user.getPoints()+points);
+        user.setPoints(user.getPoints()+ 10*points);
+        String existingString = user.getListOfCompanies();
+        existingString.concat(company).concat("-");
+        user.setListOfCompanies(existingString);
         return userRepository.save(user);
     }
 

@@ -4,7 +4,6 @@ package com.kth.foodtech.digitalfair.controller;
 import com.kth.foodtech.digitalfair.exeption.CodeInvalidException;
 import com.kth.foodtech.digitalfair.exeption.UserAlreadyExistsException;
 import com.kth.foodtech.digitalfair.exeption.UserNotFoundException;
-import com.kth.foodtech.digitalfair.model.RedeemCode;
 import com.kth.foodtech.digitalfair.model.User;
 import com.kth.foodtech.digitalfair.request.RedeemCodeApplyRequest;
 import com.kth.foodtech.digitalfair.service.UserService;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -45,10 +42,10 @@ public class UserController {
         }
     }
 
-    @GetMapping("/change_points/{username}/{points}")
-    public ResponseEntity<User> changeUserPoints(@PathVariable String username, @PathVariable Integer points) {
+    @GetMapping("/change_points/{username}/{points}/{company}")
+    public ResponseEntity<User> changeUserPoints(@PathVariable String username, @PathVariable Integer points, String company) {
        try {
-           User user=userService.changePoints(username, points);
+           User user=userService.changePointsAndAddCompany(username, points, company);
            return new ResponseEntity<>(user, HttpStatus.OK);
        }
         catch (UserNotFoundException unf){

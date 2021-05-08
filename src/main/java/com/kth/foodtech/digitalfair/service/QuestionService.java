@@ -28,4 +28,11 @@ public class QuestionService {
     public Question createQuestion(Question question){
         return questionRepository.save(question);
     }
+
+    public List<Question> createBulkQuestions(List<Question> questions){
+        for(Question question: questions){
+            questionRepository.save(question);
+        }
+        return  questions;
+    }
 }
