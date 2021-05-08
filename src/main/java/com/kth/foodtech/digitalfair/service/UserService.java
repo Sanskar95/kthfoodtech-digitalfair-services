@@ -43,7 +43,7 @@ public class UserService {
         User user = getUserByUsername(username);
         user.setPoints(user.getPoints()+ 10*points);
         String existingString = user.getListOfCompanies();
-        existingString.concat(company).concat("-");
+        existingString= existingString.concat(company).concat("-");
         user.setListOfCompanies(existingString);
         return userRepository.save(user);
     }
