@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/change_points/{username}/{points}/{company}")
-    public ResponseEntity<User> changeUserPoints(@PathVariable String username, @PathVariable Integer points, String company) {
+    public ResponseEntity<User> changeUserPoints(@PathVariable String username, @PathVariable Integer points, @PathVariable  String company) {
        try {
            User user=userService.changePointsAndAddCompany(username, points, company);
            return new ResponseEntity<>(user, HttpStatus.OK);
