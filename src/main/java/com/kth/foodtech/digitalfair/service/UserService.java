@@ -41,7 +41,7 @@ public class UserService {
 
     public User changePointsAndAddCompany(String username, Integer points, String company) throws UserNotFoundException {
         User user = getUserByUsername(username);
-        user.setPoints(user.getPoints()+ 10*points);
+        user.setPoints(user.getPoints()+ points);
         String existingString = user.getListOfCompanies();
         existingString= existingString.concat(company).concat("-");
         user.setListOfCompanies(existingString);
