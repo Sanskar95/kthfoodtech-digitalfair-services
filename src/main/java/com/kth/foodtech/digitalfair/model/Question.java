@@ -1,9 +1,6 @@
 package com.kth.foodtech.digitalfair.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -16,7 +13,10 @@ public class Question {
 
     private String company;
     private String question;
+
+    @Column(length=2000)
     private String options;
+
     private String correctAnswer;
 
     public String getCompany() {
