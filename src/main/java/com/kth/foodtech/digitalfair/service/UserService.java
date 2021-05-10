@@ -63,9 +63,10 @@ public class UserService {
                         .collect(Collectors.toList());
 
         for (RedeemCode redeemCode1 : redeemCodes) {
-           if(redeemCode1.getCode().equals(redeemCodeApplyRequest.getRedeemCode())){
+           if(redeemCode1.getCode().equals(redeemCodeApplyRequest.getRedeemCode()) && !redeemCode1.getUsedOnceFlag()){
                user.setEmail(redeemCodeApplyRequest.getEmail());
                user.setPoints(user.getPoints()+redeemCode1.getPoints());
+               redeemCode1.setUsedOnceFlag(true);
                codeValidFlag= true;
                break;
            }

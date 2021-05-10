@@ -15,6 +15,15 @@ public class RedeemCode {
     private String code;
     private Integer points;
     private String company;
+    private Boolean usedOnceFlag;
+
+    public Boolean getUsedOnceFlag() {
+        return usedOnceFlag;
+    }
+
+    public void setUsedOnceFlag(Boolean usedOnceFlag) {
+        this.usedOnceFlag = usedOnceFlag;
+    }
 
     public Long getId() {
         return id;
