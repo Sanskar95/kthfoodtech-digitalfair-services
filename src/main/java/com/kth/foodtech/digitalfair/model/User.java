@@ -18,12 +18,14 @@ public class User {
     private Integer snakePoints;
     private Boolean snakePlayedFlag;
     private String listOfCompanies;
+    private String listOfCodes;
 
 
     public User() {
         this.points = 0;
         this.snakePlayedFlag =false;
         this.listOfCompanies= "-";
+        this.listOfCodes="";
     }
 
     public String getUsername() {
@@ -72,5 +74,13 @@ public class User {
 
     public void setListOfCompanies(String listOfCompanies) {
         this.listOfCompanies = listOfCompanies;
+    }
+
+    public String getListOfCodes() {
+        return listOfCodes;
+    }
+
+    public void setListOfCodes(String listOfCodes) {
+        this.listOfCodes = listOfCodes;
     }
 }
